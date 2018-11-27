@@ -10,9 +10,22 @@ describe 'Mechants' do
 
     merchants = JSON.parse(response.body)
 
-    expect(Merchant.all.count).to eq(4)
-    expect(Merchant.first.name).to eq(mer_1.name)
-    expect(Merchant.last.name).to eq(mer_4.name)
+    expect(merchants.count).to eq(4)
+    expect(merchants.first["name"]).to eq(mer_1.name)
+    expect(merchants.last["name"]).to eq(mer_4.name)
+  end
+
+  it 'should send info for one merchant' do
+    mer_1 = create(:merchant).id
+
+    get "/api/v1/merchants/#{mer_1}"
+
+    expect(response).to be_successful
+
+    merchant = JSON.parse(response.body)
+
+    expect(merchant["id"]).to eq(mer_1)
 
   end
+
 end
