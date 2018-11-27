@@ -23,9 +23,9 @@ describe 'Customer' do
 
     expect(response).to be_successful
 
-    cus_1 = JSON.parse(respons.body)
+    cus_1 = JSON.parse(response.body)
 
-
-    expect()
+    expect(cus_1["first_name"]).to eq(customer.first_name)
+    expect(cus_1["id"]).to eq(customer.id)
   end
 end
