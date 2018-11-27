@@ -1,13 +1,7 @@
 require 'rails_helper'
+require 'rake'
 
 describe 'Mechants' do
-
-  # it 'should import Merchants from csv' do
-  #  rake import:merchants
-  #
-  #   expect(Merchants.count).to eq(100)
-  #
-  # end
 
   it 'should send a list with all merchants' do
     mer_1, mer_2, mer_3, mer_4 = create_list(:merchant, 4)
