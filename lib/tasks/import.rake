@@ -1,7 +1,7 @@
 require 'csv'
 
 namespace :import do
-
+  
   desc "import Merchants from csv file"
   task merchants: :environment do
     path = "data/merchants.csv"
