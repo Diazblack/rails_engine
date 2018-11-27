@@ -35,8 +35,16 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
-RSpec.configure do |config|
 
+DatabaseCleaner.strategy = :truncation
+
+RSpec.configure do |config|
+  config.before(:all) do
+    DatabaseCleaner.clean
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
   config.include FactoryBot::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -55,7 +63,6 @@ RSpec.configure do |config|
   #     RSpec.describe UsersController, :type => :controller do
   #       # ...
   #     end
-  #
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
