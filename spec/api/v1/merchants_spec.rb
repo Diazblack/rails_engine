@@ -1,6 +1,8 @@
 require 'rails_helper'
+require 'rake'
 
 describe 'Mechants' do
+
   it 'should send a list with all merchants' do
     mer_1, mer_2, mer_3, mer_4 = create_list(:merchant, 4)
 
@@ -27,5 +29,4 @@ describe 'Mechants' do
     expect(merchant["id"]).to eq(mer_1)
 
   end
-
 end
