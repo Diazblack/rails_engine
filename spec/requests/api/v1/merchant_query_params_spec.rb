@@ -114,8 +114,7 @@ describe "Merchant find parameters" do
 
     merchant_2 = JSON.parse(response.body)
 
-    expect(merchant_1["id"]).to be_random
-    # _not eq(merchant_2["id"])
+    expect(merchant_1["id"]).to_not eq(merchant_2["id"])
   end
 
 end
