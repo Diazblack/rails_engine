@@ -1,6 +1,6 @@
 require 'csv'
 
-namespace import: :environment do
+namespace :import do
 
   desc "import Merchants from csv file"
   task merchants: :environment do
@@ -39,7 +39,7 @@ namespace import: :environment do
   end
 
   desc "import Transactions from csv file"
-  task invoices: :environment do
+  task transactions: :environment do
     path = "data/transactions.csv"
     CSV.foreach(path, headers: true) do |row|
       Transaction.create(row.to_h)
@@ -49,10 +49,11 @@ namespace import: :environment do
 
   desc "import Invoice Items from csv file"
   task invoice_items: :environment do
-    path = "data/transactions.csv"
+    path = "data/invoice_items.csv"
     CSV.foreach(path, headers: true) do |row|
-      InvoiceItems.create(row.to_h)
+      InvoiceItem.create(row.to_h)
     end
-    puts "There Are #{InvoiceItems.count} Invoice Items in the Database."
+    puts "There Are #{InvoiceItem.count} Invoice Items in the Database."
   end
+
 end
