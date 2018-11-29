@@ -11,9 +11,9 @@ describe 'Customer' do
 
     customers = JSON.parse(response.body)
 
-    expect(customers.count).to eq(4)
-    expect(customers.last["last_name"]).to eq(cus_4.last_name)
-    expect(customers.first["id"]).to eq(cus_1.id)
+    expect(customers["data"].count).to eq(4)
+    expect(customers["data"].last['attributes']["last_name"]).to eq(cus_4.last_name)
+    expect(customers["data"].first["id"]).to eq(cus_1.id.to_s)
   end
 
   it 'Should return the info of one customer' do
@@ -25,7 +25,7 @@ describe 'Customer' do
 
     cus_1 = JSON.parse(response.body)
 
-    expect(cus_1["first_name"]).to eq(customer.first_name)
-    expect(cus_1["id"]).to eq(customer.id)
+    expect(cus_1["data"]["attributes"]["first_name"]).to eq(customer.first_name)
+    expect(cus_1["data"]["id"]).to eq(customer.id.to_s)
   end
 end

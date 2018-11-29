@@ -11,7 +11,7 @@ describe "Merchant find parameters" do
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant["name"]).to eq(mer_2.name)
+    expect(merchant['data']['attributes']["name"]).to eq(mer_2.name)
 
   end
 
@@ -26,8 +26,8 @@ describe "Merchant find parameters" do
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant.count).to eq(2)
-    expect(merchant.last["id"]).to eq(mer_6.id)
+    expect(merchant['data'].count).to eq(2)
+    expect(merchant['data'].last["id"]).to eq(mer_6.id.to_s)
 
   end
 
@@ -42,7 +42,7 @@ describe "Merchant find parameters" do
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant["created_at"]).to eq("2012-03-27T14:54:05.000Z")
+    expect(merchant['data']['id']).to eq(mer_2.id.to_s)
 
   end
 
@@ -59,9 +59,9 @@ describe "Merchant find parameters" do
 
     merchants = JSON.parse(response.body)
 
-    expect(merchants.count).to eq(3)
-    expect(merchants.first["created_at"]).to eq("2012-03-27T14:54:05.000Z")
-    expect(merchants.last["created_at"]).to eq("2012-03-27T14:54:05.000Z")
+    expect(merchants['data'].count).to eq(3)
+    expect(merchants['data'].first["id"]).to eq(mer_2.id.to_s)
+    expect(merchants['data'].last["id"]).to eq(mer_4.id.to_s)
 
   end
 
@@ -76,7 +76,7 @@ describe "Merchant find parameters" do
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant["updated_at"]).to eq("2012-03-27T14:54:05.000Z")
+    expect(merchant['data']['id']).to eq(mer_2.id.to_s)
 
   end
 
@@ -93,9 +93,9 @@ describe "Merchant find parameters" do
 
     merchants = JSON.parse(response.body)
 
-    expect(merchants.count).to eq(3)
-    expect(merchants.first["updated_at"]).to eq("2012-03-27T14:54:05.000Z")
-    expect(merchants.last["updated_at"]).to eq("2012-03-27T14:54:05.000Z")
+    expect(merchants['data'].count).to eq(3)
+    expect(merchants['data'].first["id"]).to eq(mer_2.id.to_s)
+    expect(merchants['data'].last["id"]).to eq(mer_4.id.to_s)
 
   end
 
@@ -114,7 +114,7 @@ describe "Merchant find parameters" do
 
     merchant_2 = JSON.parse(response.body)
 
-    expect(merchant_1["id"]).to_not eq(merchant_2["id"])
+    expect(merchant_1['data']["id"]).to_not eq(merchant_2["id"])
   end
 
 end

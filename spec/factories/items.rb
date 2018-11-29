@@ -3,6 +3,6 @@ FactoryBot.define do
     sequence :name { |n| "Item #{n}" }
     sequence :description { |n| "this is so great #{n}" }
     sequence :unit_price { |n| 1.1 * n }
-             merchant { nil }
+              merchant { nil }
   end
 end

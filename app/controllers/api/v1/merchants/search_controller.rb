@@ -1,14 +1,14 @@
 class Api::V1::Merchants::SearchController < ApplicationController
 
   def index
-    render json: Merchant.where(search_params)
+    render json: MerchantsSerializer.new(Merchant.where(search_params))
   end
 
   def show
     if search_params.empty?
-      render json: Merchant.order('random()').first
+      render json: MerchantsSerializer.new(Merchant.order('random()').first)
     else
-      render json: Merchant.find_by(search_params)
+      render json: MerchantsSerializer.new(Merchant.find_by(search_params))
     end
   end
 
