@@ -3,7 +3,6 @@ class CreateItems < ActiveRecord::Migration[5.1]
     create_table :items do |t|
       t.string :name
       t.text :description
-      t.integer :quantity
       t.decimal :unit_price
       t.references :merchant, foreign_key: true
 
