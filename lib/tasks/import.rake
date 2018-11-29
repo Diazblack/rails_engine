@@ -28,4 +28,32 @@ namespace :import do
     end
     puts "There Are #{Item.count} Items in the Database."
   end
+
+  desc "import Invoices from csv file"
+  task invoices: :environment do
+    path = "data/invoices.csv"
+    CSV.foreach(path, headers: true) do |row|
+      Invoice.create(row.to_h)
+    end
+    puts "There Are #{Invoice.count} Invoices in the Database."
+  end
+
+  desc "import Transactions from csv file"
+  task transactions: :environment do
+    path = "data/transactions.csv"
+    CSV.foreach(path, headers: true) do |row|
+      Transaction.create(row.to_h)
+    end
+    puts "There Are #{Transaction.count} Transactions in the Database."
+  end
+
+  desc "import Invoice Items from csv file"
+  task invoice_items: :environment do
+    path = "data/invoice_items.csv"
+    CSV.foreach(path, headers: true) do |row|
+      InvoiceItem.create(row.to_h)
+    end
+    puts "There Are #{InvoiceItem.count} Invoice Items in the Database."
+  end
+
 end
