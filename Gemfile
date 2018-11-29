@@ -9,7 +9,7 @@ end
 gem 'rails', '~> 5.1.6'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
-
+gem 'fast_jsonapi'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -18,6 +18,7 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'shoulda-matchers', '~> 3.1'
 
 end
 
