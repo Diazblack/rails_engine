@@ -11,7 +11,6 @@ describe 'Items' do
 
   it 'Should send a list of items ' do
 
-
     get '/api/v1/items'
 
     expect(response).to be_successful
