@@ -3,6 +3,6 @@ FactoryBot.define do
     item                  { " " }
     invoice               { " " }
     sequence :quantity   { |n| n }
-    sequence :unit_price { Range(10..999999) }
+    sequence :unit_price { rand(10..999999) }
   end
 end
