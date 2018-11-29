@@ -17,7 +17,20 @@ describe 'Items' do
     expect(response).to be_successful
 
     items = JSON.parse(response.body)
+
     expect(items["data"].count).to eq(4)
     expect(items["data"].first["id"]).to eq(@item_1.id.to_s)
+  end
+
+  it 'Should send item by id' do
+
+
+    get "/api/v1/items/#{@item_2.id}"
+
+    expect(response).to be_successful
+
+    items = JSON.parse(response.body)
+
+    expect(items["data"]["id"]).to eq(@item_2.id.to_s)
   end
 end
