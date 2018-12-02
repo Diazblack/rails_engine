@@ -71,9 +71,9 @@ RSpec.describe Merchant, type: :model do
     end
 
     it "should get revenue by single merchant" do
-      total_revenue = ((@inv_item_1.quantity * @inv_item_1.unit_price) + (@inv_item_2.quantity * @inv_item_2.unit_price)) / 100.00
+      total_revenue = ((@inv_item_1.quantity * @inv_item_1.unit_price) + (@inv_item_2.quantity * @inv_item_2.unit_price)) 
 
-      expect(Merchant.revenue(@merchant_1.id)).to eq(total_revenue)
+      expect(Merchant.single_revenue(@merchant_1.id)).to eq(total_revenue)
     end
   end
 end

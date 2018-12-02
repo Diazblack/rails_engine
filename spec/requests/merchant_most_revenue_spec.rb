@@ -44,6 +44,6 @@ describe 'Revenue per single mechant' do
 
     revenue = JSON.parse(response.body)
 
-    expect(revenue).to eq(total_revenue.to_s)
+    expect(revenue['data']['attributes']['revenue']).to eq(total_revenue.to_s)
   end
 end
