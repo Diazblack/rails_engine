@@ -1,4 +1,6 @@
 class Api::V1::Merchants::RevenueController < ApplicationController
   def show
-  end 
+    render json: Merchant.revenue(params[:id])
+    
+  end
 end
