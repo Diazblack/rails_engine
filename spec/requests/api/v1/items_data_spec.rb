@@ -28,8 +28,9 @@ describe 'Items' do
 
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    item = JSON.parse(response.body)
 
-    expect(items["data"]["id"]).to eq(@item_2.id.to_s)
+    expect(item["data"]["id"]).to eq(@item_2.id.to_s)
+    expect(item['data']['attributes']['unit_price']).to eq((@item_2.unit_price / 100.00))
   end
 end
