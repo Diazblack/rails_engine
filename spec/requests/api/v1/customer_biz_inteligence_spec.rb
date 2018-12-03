@@ -42,7 +42,7 @@ describe "Customer Business Inteligence" do
 
     merchant = JSON.parse(response.body)
 
-    expect(merchant['data']['id']).to eq(@merchant_1)
+    expect(merchant['data']['id']).to eq(@merchant_1.id.to_s)
 
   end
 

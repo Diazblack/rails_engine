@@ -38,7 +38,9 @@ RSpec.describe Customer, type: :model do
     end
 
     it "Should return the merchant with most complete transactions by the customer" do
-      
+
+      expect(Customer.favorite_merchant(@customer_1.id)).to eq(@merchant_1)
+      expect(Customer.favorite_merchant(@customer_1.id)).to_not eq(@merchant_2)
     end
   end
 end
