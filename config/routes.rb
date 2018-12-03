@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :merchants do
+        get ':id/favorite_customer', to: 'customer#show'
         get ':id/revenue', to: 'revenue#show'
         get '/find', to: 'search#show'
         get '/find_all', to: 'search#index'
