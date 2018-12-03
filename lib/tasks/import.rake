@@ -2,58 +2,25 @@ require 'csv'
 
 namespace :import do
 
-  desc "import Merchants from csv file"
-  task merchants: :environment do
-    path = "data/merchants.csv"
-    CSV.foreach(path, headers: true) do |row|
-      Merchant.create(row.to_h)
-    end
-    puts "There Are #{Merchant.count} Merchants in the Database."
-  end
+  desc "import Data from csv file"
+  task seeds: :environment do
+    data_hash = {  "Merchant" => ["data/merchants.csv", Merchant],
+              "Customer" => ["data/customers.csv", Customer],
+              "Items" => ["data/items.csv", Item],
+              "Invoice" => ["data/invoices.csv", Invoice],
+              "Transactions" => ["data/transactions.csv", Transaction],
+              "InvoiceItem" => ["data/invoice_items.csv", InvoiceItem],
 
-  desc "import customers from csv file"
-  task customers: :environment do
-    path = "data/customers.csv"
-    CSV.foreach(path, headers: true) do |row|
-      Customer.create(row.to_h)
-    end
-    puts "There Are #{Customer.count} Customers in the Database."
-  end
 
-  desc "import Items from csv file"
-  task items: :environment do
-    path = "data/items.csv"
-    CSV.foreach(path, headers: true) do |row|
-      Item.create(row.to_h)
-    end
-    puts "There Are #{Item.count} Items in the Database."
-  end
+    }
 
-  desc "import Invoices from csv file"
-  task invoices: :environment do
-    path = "data/invoices.csv"
-    CSV.foreach(path, headers: true) do |row|
-      Invoice.create(row.to_h)
-    end
-    puts "There Are #{Invoice.count} Invoices in the Database."
-  end
+    data_hash.each do |key, array|
 
-  desc "import Transactions from csv file"
-  task transactions: :environment do
-    path = "data/transactions.csv"
-    CSV.foreach(path, headers: true) do |row|
-      Transaction.create(row.to_h)
+      CSV.foreach(array[0], headers: true) do |row|
+        array[1].create(row.to_h)
+      end
+      puts "There Are #{array[1].count} #{key} in the Database."
     end
-    puts "There Are #{Transaction.count} Transactions in the Database."
-  end
-
-  desc "import Invoice Items from csv file"
-  task invoice_items: :environment do
-    path = "data/invoice_items.csv"
-    CSV.foreach(path, headers: true) do |row|
-      InvoiceItem.create(row.to_h)
-    end
-    puts "There Are #{InvoiceItem.count} Invoice Items in the Database."
   end
 
 end
