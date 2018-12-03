@@ -1,25 +1,20 @@
 # README
+# Rails Engine
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails Engine is an Rails  application (Rails v 5.1.6.1) to deliver information for it database in Json format.
 
-Things you may want to cover:
+## Instalation
 
-* Ruby version
+1. Fork and Clone repo
+2. Run a bundle
+3. Create the database and run the migrations
 
-* System dependencies
+``` ruby
+rake db:{create, migrate}
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# rails_engine
+4. Run the following rake task to populate the database
+```ruby
+rake import:seeds
+```
+__note:__ While the rake task is running it will display how many entries has been created in the db.
