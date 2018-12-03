@@ -9,6 +9,10 @@ Rails.application.routes.draw do
         get '/random', to: 'search#show'
       end
 
+      namespace :customers do
+        get ':id/favorite_merchant', to: 'merchant#show'
+      end
+
       resources :merchants, only: [:index, :show]
       resources :customers, only: [:index, :show]
       resources :items, only: [:index, :show]
